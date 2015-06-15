@@ -16,7 +16,7 @@
   <% if user_signed_in? %>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-     
+
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a>Welcome, <%= current_user.first_name %></a></li>
@@ -33,10 +33,10 @@
 </nav>
 <% if notice %>
     <p class="alert alert-success"><%= notice %></p>
-  <% end %>
-  <% if alert %>
+<% end %>
+<% if alert %>
     <p class="alert alert-danger"><%= alert %></p>
-  <% end %>
+<% end %>
 
 
 <%= yield %>
