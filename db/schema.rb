@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150615193705) do
+ActiveRecord::Schema.define(version: 20150615205307) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,21 @@ ActiveRecord::Schema.define(version: 20150615193705) do
     t.string  "rating"
     t.string  "slope"
     t.integer "number_holes"
+  end
+
+  create_table "holes", force: :cascade do |t|
+    t.integer "hole_number"
+    t.integer "yardage"
+    t.integer "par"
+  end
+
+  create_table "tips", force: :cascade do |t|
+    t.string   "body"
+    t.integer  "user_id"
+    t.integer  "course_id"
+    t.integer  "hole_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", force: :cascade do |t|
