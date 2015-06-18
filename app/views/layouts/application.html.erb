@@ -5,31 +5,42 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <a class="navbar-brand" href="/">CrowdCaddy</a>
+<nav class="navbar navbar-default" role="navigation">
+  <!-- Brand and toggle get grouped for better mobile display -->
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="/">CrowdCaddy</a>
+  </div>
+
+  <!-- Collect the nav links, forms, and other content for toggling -->
+  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+    <div class="col-sm-5 col-md-3">
+        <form class="navbar-form" method='get' id='search-form' action='/search' role="search">
+        <div class="input-group">
+            <input type="text" id='search' class="form-control" placeholder="Search" name="search">
+            <div class="input-group-btn">
+                <button class="btn btn-default" value='search' type="submit"><i class="glyphicon glyphicon-search"></i></button>
+            </div>
+        </div>
+        </form>
     </div>
-
-  <% if user_signed_in? %>
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a>Welcome, <%= current_user.first_name %></a></li>
-        <li><%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %></li>
-        <li><%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link' %></li>
-      </ul>
-  <% else %>
     <ul class="nav navbar-nav navbar-right">
-      <li><%= link_to "Login", new_user_session_path, :class => 'navbar-link'%></li>
+      <% if current_user %>
+            <li class"active"><%= link_to "#{current_user.first_name} ""#{current_user.last_name}", user_path(current_user.id) %></li>
+            <li class"active"><%= link_to "Sign Out", destroy_user_session_path, method: :delete, :class => 'navbar-link' %></li>
+      <% else %>
+            <li><%= link_to "Sign In", new_user_session_path %></li>
+      <% end %>
     </ul>
-  <% end %>
   </div><!-- /.navbar-collapse -->
-</div><!-- /.container-fluid -->
 </nav>
   <div class="container">
   <% if notice %>

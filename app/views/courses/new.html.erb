@@ -1,0 +1,40 @@
+<h2>Add Course</h2>
+<%= form_for @course, :class => 'form-horizontal' do |form| %>
+<div class="col-md-4">
+    <div class='form-group'>
+  <%= form.label :name, class:"control-label col-md-2"%>
+  <%= form.text_field :name, :class => 'form-control' %>
+  </div>
+  <div class='form-group'>
+  <%= form.label :city, class:"control-label col-md-2" %>
+  <%= form.text_field :city, :class => 'form-control' %>
+  </div>
+  <div class='form-group'>
+  <%= form.label :state, class:"control-label col-md-2" %>
+  <%= select_tag :state, options_for_select(us_states), :class => 'form-control' %>
+  </div>
+  <div class='form-group'>
+  <%= form.label :architect, class:"control-label col-md-2" %>
+  <%= form.text_field :architect, :class => 'form-control' %>
+  </div>
+  <div class='form-group'>
+  <%= form.label :style, class:"control-label col-md-2" %>
+  <%= select_tag :style, options_for_select([['Links', 'Links'], ['Parkland', 'Parkland'], ['Desert', 'Desert'], ['Heathland', 'Heathland'], ['Resort', 'Resort']]), :class => 'form-control' %>  </div>
+  <div class='form-group'>
+  <%= form.label :rating,  class:"control-label col-md-2" %>
+  <%= form.text_field :rating, :class => 'form-control' %>
+  </div>
+  <div class='form-group'>
+  <%= form.label :slope,  class:"control-label col-md-2" %>
+  <%= form.text_field :slope, :class => 'form-control' %>
+  </div>
+  <div class='form-group'>
+  <%= form.label :number_holes, 'Number of Holes',  class:"control-label col-md-2" %>
+  <%= select_tag :number_holes, options_for_select([['9', 9], ['18', 18]]), :class => 'form-control' %>
+  </div>
+  <div class='form-group'>
+  <%= form.submit 'submit', :id => 'form-button', :class => 'btn btn--full' %>
+  </div>
+</div>
+
+<% end %>
