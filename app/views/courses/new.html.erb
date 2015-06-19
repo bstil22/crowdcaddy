@@ -11,7 +11,7 @@
   </div>
   <div class='form-group'>
   <%= form.label :state, class:"control-label col-md-2" %>
-  <%= select_tag :state, options_for_select(us_states), :class => 'form-control' %>
+  <%= form.select :state, options_for_select(us_states), :class => 'form-control' %>
   </div>
   <div class='form-group'>
   <%= form.label :architect, class:"control-label col-md-2" %>
@@ -19,7 +19,7 @@
   </div>
   <div class='form-group'>
   <%= form.label :style, class:"control-label col-md-2" %>
-  <%= select_tag :style, options_for_select([['Links', 'Links'], ['Parkland', 'Parkland'], ['Desert', 'Desert'], ['Heathland', 'Heathland'], ['Resort', 'Resort']]), :class => 'form-control' %>  </div>
+  <%= form.select :style, options_for_select([['Links', 'Links'], ['Parkland', 'Parkland'], ['Desert', 'Desert'], ['Heathland', 'Heathland'], ['Resort', 'Resort']]), :class => 'form-control' %>  </div>
   <div class='form-group'>
   <%= form.label :rating,  class:"control-label col-md-2" %>
   <%= form.text_field :rating, :class => 'form-control' %>
@@ -30,7 +30,7 @@
   </div>
   <div class='form-group'>
   <%= form.label :number_holes, 'Number of Holes',  class:"control-label col-md-2" %>
-  <%= select_tag :number_holes, options_for_select([['9', 9], ['18', 18]]), :class => 'form-control' %>
+  <%= form.select :number_holes, options_for_select([['9', '9'], ['18', '18']]), :class => 'form-control' %>
   </div>
   <div class='form-group'>
   <%= form.submit 'submit', :id => 'form-button', :class => 'btn btn--full' %>

@@ -1,10 +1,12 @@
 class CoursesController < ApplicationController
+  include HolesHelper
   def new
     @course = Course.new
   end
   def create
     @course = Course.new(course_params)
     if @course.save
+      create_holes(@course)
       redirect_to course_path(@course)
     else
       render 'new'
