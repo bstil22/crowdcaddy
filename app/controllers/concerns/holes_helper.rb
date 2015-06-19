@@ -4,9 +4,8 @@ module HolesHelper
     if course.number_holes == '9'
       9.times do
         hole = course.holes.create
-        hole.hole_number = x + 1
+        hole.hole_number = x += 1
         hole.save!
-        x += 1
       end
     else
       18.times do
