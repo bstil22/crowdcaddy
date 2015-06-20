@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   root 'welcome#index'
 
   resources :courses do
-     resources :holes
-   end
+     resources :holes do
+       resources :tips
+     end
+  end
 end
