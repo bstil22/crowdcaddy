@@ -1,3 +1,4 @@
+<%= link_to "Add Course", new_course_path  %>
 <% @courses.each do |course| %>
-<p><%= link_to "#{course.name}", course_path(course)  %></p>
+<h3><%= link_to "#{course.name}", course_path(course)  %></h3>
 <% end %>
