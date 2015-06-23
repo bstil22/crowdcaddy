@@ -1,5 +1,8 @@
 class CoursesController < ApplicationController
   include HolesHelper
+  def index
+    @courses = Course.all
+  end
   def new
     @course = Course.new
   end
@@ -26,6 +29,7 @@ class CoursesController < ApplicationController
   end
   def show
     @course = Course.find(params[:id])
+    @holes = @course.holes.order("id asc")
   end
 
   private

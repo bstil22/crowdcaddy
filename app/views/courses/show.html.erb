@@ -1,0 +1,10 @@
+<h1><%= @course.name %></h1>
+<% @holes.each do |hole| %>
+  <h4>Hole <%= hole.hole_number %></h4>
+  <% if hole.tips.length != 0 %>
+    <% hole.tips.each do |tip| %>
+    <p><%= tip.body %></p>
+    <% end %>
+  <% end %>
+    <%= link_to "Add a Tip", new_course_hole_tip_path(@course, hole)  %>
+<% end %>
