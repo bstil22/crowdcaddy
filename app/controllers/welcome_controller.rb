@@ -1,7 +1,8 @@
 class WelcomeController < ApplicationController
-  before_action do
-    @user = current_user
-  end
  def index
+ end
+ def query
+ end
+ def results
  end
 end
