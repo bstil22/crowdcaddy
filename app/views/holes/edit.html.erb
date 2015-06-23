@@ -1,0 +1,22 @@
+<div class="container">
+  <h1 class="page-header">Edit Hole <%= @hole.hole_number %></h1>
+
+<%= form_for [@course, @hole], method: :patch, html: {class: "form-horizontal"} do |f| %>
+  <div class="form-group">
+    <%=f.label :yardage, class: "control-label col-md-2" %>
+    <div class="col-md-3">
+      <%=f.text_field :yardage, class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%=f.label :par, class: "control-label col-md-2" %>
+    <div class="col-md-3">
+      <%=f.select :par, options_for_select([['3', '3'], ['4', '4'], ['5', '5']]), :class => 'form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+      <center><%= f.submit 'Update', id: "form-button", class:"btn" %></center>
+        <%= link_to "Cancel", course_path(@course), class: "btn" %>
+  </div>
+<% end %>
+</div>
