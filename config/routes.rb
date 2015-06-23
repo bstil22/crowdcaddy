@@ -8,8 +8,14 @@ Rails.application.routes.draw do
   root 'welcome#index'
   get '/search' => 'welcome#query'
   resources :courses do
-     resources :holes do
-       resources :tips
-     end
+   resources :holes do
+     resources :tips do
+      member do
+        put "like" => "tips#upvote"
+        put "dislike" => "tips#downvote"
+      end
+    end
   end
 end
+end
+
