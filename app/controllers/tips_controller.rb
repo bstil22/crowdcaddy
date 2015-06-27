@@ -8,6 +8,7 @@ class TipsController < ApplicationController
     @tip = @hole.tips.new(tip_params)
     @tip.user = current_user
     if @tip.save
+      pp @tip
       redirect_to course_path(@course)
     else
       render 'new'
@@ -39,7 +40,7 @@ class TipsController < ApplicationController
 
   def tip_params
     params.require(:tip).permit(
-      :body, :course_id, :hole_id, :user_id
+      :body, :course_id, :hole_id, :user_id, :yardage
       )
   end
   def set_course_and_holes
