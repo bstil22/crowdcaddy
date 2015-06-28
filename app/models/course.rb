@@ -6,4 +6,6 @@ class Course < ActiveRecord::Base
   validates :state, presence: true
   validates :city, presence: true
   validates :style, presence: true
+  validates_format_of :slope, :with => /\d/
+  validates_format_of :rating, :with => /\d/
 end
