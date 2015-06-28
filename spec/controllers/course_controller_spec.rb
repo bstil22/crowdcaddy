@@ -19,6 +19,34 @@ RSpec.describe CoursesController, :type => :controller do
     end 
   end
 
+  describe "POST create" do
+  context "with valid attributes" do
+    it "creates a new course" do
+      expect{
+        post :create, course: FactoryGirl.attributes_for(:course)
+      }.to change(Course,:count).by(1)
+    end
+
+    it "redirects to the new course" do
+      post :create, course: FactoryGirl.attributes_for(:course)
+      expect(response).to redirect_to(Course.last)
+    end
+  end
+
+  context "with invalid attributes" do
+    it "does not save the new contact" do
+      expect{
+        post :create, course: FactoryGirl.attributes_for(:invalid_course)
+      }.to_not change(Course,:count)
+    end
+
+    it "re-renders the new method" do
+      post :create, course: FactoryGirl.attributes_for(:invalid_course)
+      expect(response).to render_template :new
+    end
+  end 
+end
+
   describe "GET #show" do
     it "assigns the requested course to @course" do 
       course = FactoryGirl.create(:course) 
