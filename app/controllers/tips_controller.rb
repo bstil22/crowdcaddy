@@ -1,5 +1,6 @@
 class TipsController < ApplicationController
   before_action :set_course_and_holes
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update]
 
   def new
     @tip = @hole.tips.new
@@ -8,7 +9,6 @@ class TipsController < ApplicationController
     @tip = @hole.tips.new(tip_params)
     @tip.user = current_user
     if @tip.save
-      pp @tip
       redirect_to course_path(@course)
     else
       render 'new'
