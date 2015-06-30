@@ -5,6 +5,7 @@ class Tip < ActiveRecord::Base
   belongs_to :hole
   validates :yardage, presence: true
   validates :body, presence: true
+  validates :hole_id, :presence => true
   acts_as_votable
 
   def capitalize_attributes
