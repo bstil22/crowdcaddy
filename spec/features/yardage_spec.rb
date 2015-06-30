@@ -4,7 +4,6 @@ RSpec.describe TipsController, :type => :controller do
   describe "POST #create" do
     it "responds successfully with an HTTP 230 status code" do
       a = FactoryGirl.create(:course)
-      pp a
       b = a.holes.create!
       user = FactoryGirl.create(:user)
       sign_in :user, user
