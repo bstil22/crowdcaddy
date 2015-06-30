@@ -1,7 +1,9 @@
 class TipsController < ApplicationController
   before_action :set_course_and_holes
   before_action :authenticate_user!, only: [:new, :create, :edit, :update]
-
+  def index
+    @tips = @course.present? ? @course.tips : Tip.all
+  end
   def new
     @tip = @hole.tips.new
   end
@@ -34,6 +36,9 @@ class TipsController < ApplicationController
     @tip.downvote_from current_user
     redirect_to course_path(@course)
   end
+  def show
+    @tip = Tip.find(params[:id])
+  end
 
 
   private
@@ -44,8 +49,8 @@ class TipsController < ApplicationController
       )
   end
   def set_course_and_holes
-    @course = Course.find(params[:course_id])
-    @hole = @course.holes.find(params[:hole_id])
+    @course = Course.find(params[:course_id]) if params[:course_id].present?
+    @hole = @course.holes.find(params[:hole_id]) if params[:hole_id].present?
   end
 
 end

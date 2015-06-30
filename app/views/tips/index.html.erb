@@ -1,0 +1,6 @@
+<% @tips.each do |tip| %>
+   <p> <%= tip.body.gsub(/([a-z])((?:[^.?!]|\.(?=[a-z]))*)/i) { $1.upcase + $2.rstrip }%> 
+    <% if tip.yardage != nil %>
+      Yardage off tee: <%= tip.yardage %> </p>
+   <% end %>
+<% end %>
