@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'welcome#index'
+  resources :tips, only: [:index]
   get '/search' => 'welcome#query'
   resources :courses do
    resources :holes do
