@@ -1,12 +1,12 @@
 class HolesController < ApplicationController
   def edit
-    @course = Course.find(params[:course_id])
-    @hole = @course.holes.find(params[:id])
+    @hole = Hole.find(params[:id])
+    @course = Course.find(@hole.course_id)
   end
 
   def update
-    @course = Course.find(params[:course_id])
-    @hole = @course.holes.find(params[:id])
+    @hole = Hole.find(params[:id])
+    @course = Course.find(@hole.course_id)
       if @hole.update(hole_params)
         flash[:notice] = "Hole successfully updated"
         redirect_to course_path(@course)

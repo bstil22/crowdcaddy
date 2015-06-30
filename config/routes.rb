@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   root 'welcome#index'
   resources :tips, only: [:index]
   get '/search' => 'welcome#query'
-  resources :courses do
+  resources :courses, shallow: true do
    resources :holes do
      resources :tips do
       member do

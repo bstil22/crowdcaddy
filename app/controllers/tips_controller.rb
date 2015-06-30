@@ -1,8 +1,9 @@
 class TipsController < ApplicationController
   before_action :set_course_and_holes
+  before_action :upvote_downvote_helper, only: [:upvote, :downvote]
   before_action :authenticate_user!, only: [:new, :create, :edit, :update]
   def index
-    @tips = @course.present? ? @course.tips : Tip.all
+    @tips = @hole.present? ? @hole.tips : Tip.all
   end
   def new
     @tip = @hole.tips.new
@@ -20,19 +21,18 @@ class TipsController < ApplicationController
     @tip = @hole.tips.find(params[:id])
   end
   def update
-    @course = Course.find(params[:course_id])
-    @hole = @course.holes.find(params[:hole_id])
     @tip.update(tip_params)
     redirect_to course_path(@course)
   end
 
   def upvote
-    @tip = @hole.tips.find(params[:id])
+
+    @tip = Tip.find(params[:id])
     @tip.upvote_from current_user
     redirect_to course_path(@course)
   end
   def downvote
-    @tip = @hole.tips.find(params[:id])
+    @tip = Tip.find(params[:id])
     @tip.downvote_from current_user
     redirect_to course_path(@course)
   end
@@ -45,12 +45,17 @@ class TipsController < ApplicationController
 
   def tip_params
     params.require(:tip).permit(
-      :body, :course_id, :hole_id, :user_id, :yardage
+      :body,:hole_id, :user_id, :yardage
       )
   end
   def set_course_and_holes
-    @course = Course.find(params[:course_id]) if params[:course_id].present?
-    @hole = @course.holes.find(params[:hole_id]) if params[:hole_id].present?
+    @hole = Hole.find(params[:hole_id]) if params[:hole_id].present?
+    @course = Course.find(@hole.course_id) if params[:hole_id].present?
+  end
+  def upvote_downvote_helper
+    @tip = Tip.find(params[:id])
+    @hole = Hole.find(@tip.hole_id)
+    @course = Course.find(@hole.course_id)
   end
 
 end
