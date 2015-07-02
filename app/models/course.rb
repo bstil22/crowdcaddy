@@ -6,6 +6,6 @@ class Course < ActiveRecord::Base
   validates :state, presence: true
   validates :city, presence: true
   validates :style, presence: true
-  validates_format_of :slope, :with => /\d/
-  validates_format_of :rating, :with => /\d/
+  validates_numericality_of :slope, :greater_than_or_equal_to => 55, :less_than_or_equal_to => 155 
+  validates_numericality_of :rating  
 end
