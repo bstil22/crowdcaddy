@@ -14,9 +14,7 @@ class Tip < ActiveRecord::Base
 
   def capitalize_sentences(string)
     unless string.blank?
-      string.split('.').map do |sentence|
-        sentence.strip.capitalize
-      end.join(' ')
+      string.gsub(/([a-z])((?:[^.?!]|\.(?=[a-z]))*)/i) { $1.upcase + $2.rstrip }
     end
   end
 end
