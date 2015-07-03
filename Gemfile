@@ -27,7 +27,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'devise'
 # Use Unicorn as the app server
 # gem 'unicorn'
-
+gem 'font-awesome-sass', '~> 4.3.0'
 #bootstrap
 gem 'bootstrap-sass', '~> 3.3.4'
 gem 'sass-rails', '~> 5.0'
