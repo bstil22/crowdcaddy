@@ -28,10 +28,8 @@ gem 'devise'
 # Use Unicorn as the app server
 # gem 'unicorn'
 gem 'font-awesome-sass', '~> 4.3.0'
-#bootstrap
-gem 'bootstrap-sass', '~> 3.3.4'
-gem 'sass-rails', '~> 5.0'
-
+gem 'sass-rails'
+gem 'materialize-sass'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 gem 'acts_as_votable', '~> 0.10.0'
