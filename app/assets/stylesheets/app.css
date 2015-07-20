@@ -1,4 +1,13 @@
-@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro);
-.upvote {
+body {
+    display: flex !important;
+    min-height: 100vh !important;
+    flex-direction: column !important;
+  }
+
+main {
+    flex: 1 0 auto !important;
+  }
+
+#upvote {
   display: block !important;
 }
