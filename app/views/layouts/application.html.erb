@@ -2,47 +2,47 @@
 <html>
 <head>
   <title>Crowdcaddy</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <%= stylesheet_link_tag  'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= favicon_link_tag 'icon.ico' %>
+  <%= csrf_meta_tags %>
 </head>
-<nav class="navbar navbar-default" role="navigation">
-  <!-- Brand and toggle get grouped for better mobile display -->
-  <div class="navbar-header">
-    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-      <span class="sr-only">Toggle navigation</span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-    </button>
-    <a class="navbar-brand" href="/">CrowdCaddy</a>
-  </div>
-
-  <!-- Collect the nav links, forms, and other content for toggling -->
-  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-
-    <div class="col-sm-5 col-md-3">
-        <form class="navbar-form" method='get' id='search-form' action='/search' role="search">
-        <div class="input-group">
-            <input type="text" id='search' class="form-control" placeholder="Search" name="search">
-            <div class="input-group-btn">
-                <button class="btn btn-default" value='search' type="submit"><i class="glyphicon glyphicon-search"></i></button>
-            </div>
-        </div>
-        </form>
-    </div>
-    <ul class="nav navbar-nav navbar-right">
+<header class="group">
+<div class="navbar-fixed">
+<nav class="navbar nav-fullwidth navbar-pills" role="navigation">
+  <nav>
+    <div class="nav-wrapper">
+    <div class="container">
+      <a href="/" class="brand-logo">CrowdCaddy</a>
+     <!--  <form method='get' id='search-form' action='/search' role="search">
+      <label for="search"><i class="material-icons">search</i></label>
+      <li><input type="text"/></li>
+      </form> -->
+      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+      <ul class="right hide-on-med-and-down">
       <% if current_user %>
-            <li class"active"><%= link_to "#{current_user.first_name} ""#{current_user.last_name}", user_path(current_user) %></li>
-
-            <li class"active"><%= link_to "Sign Out", destroy_user_session_path, method: :delete, :class => 'navbar-link' %></li>
+        <li><%= link_to "#{current_user.first_name} ""#{current_user.last_name}", user_path(current_user) %></li>
+        <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
       <% else %>
-            <li><%= link_to "Sign In", new_user_session_path %></li>
+          <li><%= link_to "Sign In", new_user_session_path %></li>
       <% end %>
-    </ul>
-  </div><!-- /.navbar-collapse -->
-</nav>
+      </ul>
+      <ul class="side-nav" id="mobile-demo">
+        <% if current_user %>
+        <li><%= link_to "#{current_user.first_name} ""#{current_user.last_name}", user_path(current_user) %></li>
+        <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
+      <% else %>
+          <li><%= link_to "Sign In", new_user_session_path %></li>
+      <% end %>
+      </ul>
+    </div>
+    </div>
+  </nav>
+    </header>
+    <body>
+    <main>
   <div class="container">
   <% if notice %>
       <p class="alert alert-success"><%= notice %></p>
@@ -53,4 +53,31 @@
   <%= yield %>
   </div>
 </body>
+</main>
+<footer class="page-footer">
+          <div class="container">
+            <div class="row">
+              <div class="col l6 s12">
+                <h5 class="white-text">Connect</h5>
+                <ul>
+                  <li class='grey-text text-lighten-3'>Social Links and Email Sign Up Go Here</li>
+                </ul>
+              </div>
+              <div class="col l4 offset-l2 s12">
+                <h5 class="white-text">Links</h5>
+                <ul>
+                  <li><a class="grey-text text-lighten-3" href="/about">About</a></li>
+                  <li><a class="grey-text text-lighten-3" href="/courses">Find a Course</a></li>
+                  <li><a class="grey-text text-lighten-3" href="mailto:bradystilwell@outlook.com?Subject=Hello!">Contact Us</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="footer-copyright">
+            <div class="container">
+            © 2015 CrowdCaddy
+            </div>
+          </div>
+        </footer>
+
 </html>
