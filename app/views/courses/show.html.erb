@@ -1,27 +1,25 @@
 <h1><%= @course.name %></h1>
   <% @holes.each do |hole| %>
     <h4>Hole <%= hole.hole_number %></h4>
-    <% if hole.yardage && hole.par != nil %>
-    <p><strong><%= hole.yardage %> yard Par <%= hole.par %></strong></p>
-  <% end %>
-  <% if hole.tips.length != 0 %>
-  
-    <% hole.tips.each do |tip| %>
-     <div class="divider"></div>
-     <div class="section">
-     <div class='col s2 offset-s2'>
-    <%= link_to like_tip_path(tip),  class: "upvote", method: :put do %>
-    <i id="upvote" class="fa fa-caret-up fa-2x">
-    </i>
-  <% end %>
-    <span class=''><%= tip.get_likes.size - tip.get_dislikes.size %></span>
-    <span class='offset-s2'><%= tip.body %></span>
-    <%= link_to dislike_tip_path(tip), class: "upvote", method: :put do %>
-    <i id="upvote" class="fa fa-caret-down fa-2x"></i>
-    </div>
-    </div>
-  <% end %>
-  <% end %>
-  <% end %> 
+      <% if hole.yardage && hole.par != nil %>
+      <p><strong><%= hole.yardage %> yard Par <%= hole.par %></strong></p>
+      <% end %>
+        <% if hole.tips.length != 0 %>
+          <% hole.tips.each do |tip| %>
+           <div class="divider"></div>
+             <div class="section">
+               <div class='col s2 offset-s2'>
+              <%= link_to like_tip_path(tip),  class: "upvote", method: :put do %>
+                <i id="upvote" class="fa fa-caret-up fa-2x"></i>
+              <% end %>
+              <span class=''><%= tip.get_likes.size - tip.get_dislikes.size %></span>
+              <span class='offset-s2'><%= tip.body %></span>
+              <%= link_to dislike_tip_path(tip), class: "upvote", method: :put do %>
+              <i id="upvote" class="fa fa-caret-down fa-2x"></i>
+              </div>
+          </div>
+          <% end %>
+       <% end %>
+    <% end %>
     <%= link_to "Add a Tip", new_hole_tip_path(hole)  %>
   <% end %>

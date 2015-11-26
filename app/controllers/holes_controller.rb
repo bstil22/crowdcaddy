@@ -1,4 +1,5 @@
 class HolesController < ApplicationController
+
   def edit
     @hole = Hole.find(params[:id])
     @course = Course.find(@hole.course_id)
@@ -22,4 +23,5 @@ class HolesController < ApplicationController
       :yardage, :course_id, :par
     )
   end
+  
 end
