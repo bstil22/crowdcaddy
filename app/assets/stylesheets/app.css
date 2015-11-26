@@ -11,3 +11,11 @@ main {
 #upvote {
   display: block !important;
 }
+select {
+  display: inline !important;
+  margin-bottom: 5px !important;
+}
+
+#form-button {
+  margin-top: 15px;
+}
