@@ -13,7 +13,7 @@ describe User do
   it "is invalid when the first name contains non letter characters" do
     expect(FactoryGirl.build(:user, first_name: 'hank343$$$')).to be_invalid
   end
-  it "capitalizes sentences in the body properly" do
+  it "is invalid when the last name contains special characters" do
     expect(FactoryGirl.build(:user, last_name: ',,,..342ha$$$')).to be_invalid
   end
 end
